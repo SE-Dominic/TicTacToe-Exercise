@@ -4,6 +4,7 @@ enum Status {
 
 class TicTacToe {
   private static int BOARDSIZE = 3;
+  private int BOARDSIZE = 3;
   private static char board[][] = new char[BOARDSIZE][BOARDSIZE];
   private boolean firstPlayer;
   private boolean secondPlayer;
@@ -38,7 +39,11 @@ class TicTacToe {
   private static boolean validMove(){
     return false;}
 
-  private static char printSymbol() {
-    return 'a';
+  private static char printSymbol(int column, int row) {
+    char output;
+
+    output = board[column][row];
+
+    return output;
   }
 }
