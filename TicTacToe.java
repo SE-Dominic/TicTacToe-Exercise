@@ -9,8 +9,9 @@ public class TicTacToe {
   private boolean firstPlayer;
   private boolean gameOver;
   
+
   public void play() {
-    printBoard();
+    printBoard(); //prints the board
   }
   public void printBoard(){
     //fill matrix with empty spaces
@@ -39,7 +40,11 @@ public class TicTacToe {
   private void printStatus() {
 
   }
-  private boolean validMove() {
+  //function checks to see if the move they made is valid
+  private boolean validMove(int row, int col) {
+    if (board[row][col] == ' ') {
+      return true;
+    }
     return false;
   }
 
