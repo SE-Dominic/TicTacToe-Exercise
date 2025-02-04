@@ -3,6 +3,7 @@ enum Status {
 }
 
 class TicTacToe {
+  private static int BOARDSIZE = 3;
   private int BOARDSIZE = 3;
   private static char board[][] = new char[BOARDSIZE][BOARDSIZE];
   private boolean firstPlayer;
@@ -10,14 +11,27 @@ class TicTacToe {
   private Status status;
 
   public static void main(String[] args) {
-       System.out.println("Hello world");
+    printBoard();
   }
 
   public static void play() {
 
   }
   public static void printBoard(){
+    //fill matrix with x
+    for (int i = 0; i < BOARDSIZE; i++) {
+      for (int j = 0; j < BOARDSIZE; j++) {
+          board[i][j] = 'x';
+      }
+    }
 
+    //print board
+    for (int i = 0; i < BOARDSIZE; i++) {
+      for (int j = 0; j < BOARDSIZE; j++) {
+        System.out.print(board[i][j]);
+      }
+      System.out.println();
+    }
   }
   private static void printStatus(){
 
