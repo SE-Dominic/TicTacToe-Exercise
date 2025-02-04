@@ -4,7 +4,6 @@ enum Status {
 
 class TicTacToe {
   private static int BOARDSIZE = 3;
-  private int BOARDSIZE = 3;
   private static char board[][] = new char[BOARDSIZE][BOARDSIZE];
   private boolean firstPlayer;
   private boolean secondPlayer;
