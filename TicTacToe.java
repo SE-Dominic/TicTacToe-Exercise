@@ -38,7 +38,7 @@ public class TicTacToe {
         if (validMove(row, col)) {
           printSymbol(row, col); //place an x on the board
           printBoard(); //print the board
-          printStatus(); //print the status of the game
+          //printStatus(); //print the status of the game
           firstPlayer = false; //change to player 2's turn
         } else {
           System.out.println("Invalid move. Try again.");
@@ -55,11 +55,14 @@ public class TicTacToe {
         if (validMove(row, col)) {
           printSymbol(row, col); //place an o on the board
           printBoard(); //print the board
-          printStatus(); //print the status of the game
+          //printStatus(); //print the status of the game
           firstPlayer = true; //change to player 1's turn
         } else {
           System.out.println("Invalid move. Try again.");
         }
+      }
+      if (checkWin()) {
+        gameOver = true; //end the game
       }
     } //end of while loop
     input.close(); //close scanner
@@ -124,20 +127,40 @@ public class TicTacToe {
     //check rows
     for (int i = 0; i < BOARDSIZE; i++) {
       if (board[i][0] == board[i][1] && board[i][1] == board[i][2]) {
+        if (board[i][0] == 'x') {
+          System.out.println("Player 1 wins.");
+        } else {
+          System.out.println("Player 2 wins.");
+        }
         return true;
       }
     }
     //check columns
     for (int i = 0; i < BOARDSIZE; i++) {
       if (board[0][i] == board[1][i] && board[1][i] == board[2][i]) {
+        if (board[0][i] == 'x') {
+          System.out.println("Player 1 wins.");
+        } else {
+          System.out.println("Player 2 wins.");
+        }
         return true;
       }
     }
     //check diagonals
     if (board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
+      if (board[0][0] == 'x') {
+        System.out.println("Player 1 wins.");
+      } else {
+        System.out.println("Player 2 wins.");
+      }
       return true;
     }
     if (board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
+      if (board[0][2] == 'x') {
+        System.out.println("Player 1 wins.");
+      } else {
+        System.out.println("Player 2 wins.");
+      }
       return true;
     }
     return false;
