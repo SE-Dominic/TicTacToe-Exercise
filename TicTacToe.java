@@ -1,3 +1,4 @@
+import java.util.Scanner; //scanner for user input
 enum Status {
   WIN, DRAW, CONTINUE
 }
@@ -7,11 +8,25 @@ public class TicTacToe {
   private Status status;
   private char board[][] = new char[BOARDSIZE][BOARDSIZE];
   private boolean firstPlayer;
-  private boolean gameOver;
+  private boolean gameOver = false;
   
 
-  public void play() {
+  public void play() { //game started
+     
+    Scanner input = new Scanner(System.in);
     printBoard(); //prints the board
+    while (gameOver == false) {
+      int row, col; //row and column for the move
+      if (firstPlayer) {
+        //player 1's turn
+        System.out.println("Player 1's turn.\n");
+        System.out.println("Enter row: ");
+        row = input.nextInt(); //user input for row
+        System.out.println("Enter column: ");
+        col = input.nextInt(); //user input for column
+        
+      }
+    } //end of while loop
   }
   public void printBoard(){
     //fill matrix with empty spaces
