@@ -38,6 +38,17 @@ public class TicTacToe {
     }
   }
   private void printStatus() {
+    switch(status){
+      case WIN: 
+          System.out.println("Player " + firstPlayer + "wins.");
+          break;
+      case DRAW:
+          System.out.println("Draw.");
+          break;
+      case CONTINUE:
+          System.out.println("Player " + firstPlayer + "'s turn.");
+          break;
+    }
 
   }
   //function checks to see if the move they made is valid
