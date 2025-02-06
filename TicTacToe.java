@@ -1,4 +1,4 @@
-import java.util.Scanner; //scanner for user input
+import java.util.Scanner;
 enum Status {
   WIN, DRAW, CONTINUE
 }
@@ -25,16 +25,34 @@ public class TicTacToe {
     
     //play game loop
     while (gameOver == false) {
-      int row, col; //row and column for the move
+      int row = -1;
+      int col = -1;
       String player = (firstPlayer) ? "Player X" : "Player O"; //determine player string based on firstPlayer boolean
-      char tileChar = (firstPlayer) ? 'x' : 'o';
+      char tileChar = (firstPlayer) ? 'X' : 'O';
+      boolean validUserInput = false;
 
       System.out.println(player + "'s turn.");
-      System.out.print(player + ": Enter row ( 0, 1 or 2 ): ");
-      row = input.nextInt();
-      System.out.print(player + ": Enter row ( 0, 1 or 2 ): ");
-      col = input.nextInt();
 
+      //make sure user input is an integer
+      while(!validUserInput){
+
+        try {
+
+          System.out.print(player + ": Enter row ( 0, 1 or 2 ): ");
+          row = input.nextInt();
+          System.out.print(player + ": Enter column ( 0, 1 or 2 ): ");
+          col = input.nextInt();
+          validUserInput = true;
+
+        } catch(java.util.InputMismatchException e) {
+          
+          System.out.println("Input was not an integer, try again.\n");
+          input.nextLine(); //clear the scanners invalid input
+          validUserInput = false;
+
+        }
+
+      }
 
       //check if their move is valid
       if (validMove(row, col)) {
@@ -43,7 +61,9 @@ public class TicTacToe {
         firstPlayer = !firstPlayer; //change to player 2's turn
         turnCounter++;
       } else {
+
         System.out.println("Invalid move. Try again.");
+
       }
       
       System.out.println();
