@@ -42,10 +42,11 @@ public class TicTacToe {
   }
   //function checks to see if the move they made is valid
   public boolean validMove(int row, int col) {
-    if (board[row][col] == ' ') {
+    if (board[row][col] != 'x' || board[row][col] != 'o') {
       return true;
-    }
+    } else {
     return false;
+    }
   }
   
   private char printSymbol(int column, int row) {
