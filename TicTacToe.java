@@ -74,24 +74,24 @@ public class TicTacToe {
 
     switch(status){
       case WIN: 
-          System.out.println("Player " + firstPlayer + "wins.");
+          System.out.println("Player " + (firstPlayer ? "x" : "o") + "wins.");
           break;
       case DRAW:
           System.out.println("Draw.");
           break;
       case CONTINUE:
-          System.out.println("Player " + firstPlayer + "'s turn.");
+          System.out.println("Player " + (firstPlayer ? "x" : "o") + "'s turn.");
           break;
     }
 
   }
   //function checks to see if the move they made is valid
   public boolean validMove(int row, int col) {
-    if (board[row][col] != 'x' || board[row][col] != 'o') {
+    if ((row <= 2 && row >= 0) && (col <= 0  && col >= 2)) {
+      if(board[row][col] == ' ')
       return true;
-    } else {
-    return false;
     }
+    return false; 
   }
   
   private char printSymbol(int column, int row) {
