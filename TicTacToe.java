@@ -45,7 +45,7 @@ public class TicTacToe {
         System.out.println("Invalid move. Try again.");
       }
       
-      System.out.println(turnCounter);
+      System.out.println();
       printBoard(); //print the board
 
       switch(status){
