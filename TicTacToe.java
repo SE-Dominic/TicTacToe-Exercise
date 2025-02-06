@@ -38,7 +38,7 @@ public class TicTacToe {
 
       //check if their move is valid
       if (validMove(row, col)) {
-        board[row][col] = tileChar; //place an x on the board
+        board[row][col] = tileChar; //place corresponding tile on the board
         printBoard(); //print the board
         //printStatus(); //print the status of the game
         firstPlayer = !firstPlayer; //change to player 2's turn
@@ -53,17 +53,18 @@ public class TicTacToe {
   }
 
   public void printBoard(){
-    //print board
+    char tileChar;
+
+    //start board print
     System.out.println(" _______________________ ");
 
     //fill board with matrix charactres
     for (int i = 0; i < BOARDSIZE; i++) {
       System.out.println("|       |       |       |");
-      System.out.print("|   ");
 
       for (int j = 0; j < BOARDSIZE; j++) {
-        String output = printSymbol(i, j) + "   |   ";
-        System.out.print(output);
+        tileChar = board[i][j];
+        printSymbol(j, tileChar);
       }
 
       System.out.println("\n|_______|_______|_______|");
@@ -96,17 +97,20 @@ public class TicTacToe {
     return false; 
   }
   
-  private char printSymbol(int row, int column) {
-    char output;
-    if (firstPlayer = true){
-      output = 'x';
-      output = board[row][column];
-    } else {
-      output = 'o';
-      output = board[row][column];
+  private void printSymbol(int column, char value) {
+    switch(column){
+      case 0:
+        System.out.print("|   " + value + "   ");
+        break;
+      case 1:
+        System.out.print("|   " + value + "   |");
+        break;
+      case 2:
+        System.out.print("   " + value + "   |");
+        break;
     }
-    return output;
-}
+  }
+
   private boolean checkWin() {
     //check rows
     for (int i = 0; i < BOARDSIZE; i++) {
