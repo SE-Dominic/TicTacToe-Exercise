@@ -11,7 +11,15 @@ public class TicTacToe {
   private boolean gameOver = false;
   
 
-  public void play() { //game started
+  public void play() { 
+
+    //game started
+    //fill matrix with empty spaces
+    for (int i = 0; i < BOARDSIZE; i++) {
+      for (int j = 0; j < BOARDSIZE; j++) {
+          board[i][j] = ' ';
+      }
+    }
      
     Scanner input = new Scanner(System.in);
     printBoard(); //prints the board
@@ -57,12 +65,7 @@ public class TicTacToe {
     input.close(); //close scanner
   }
   public void printBoard(){
-    //fill matrix with empty spaces
-    for (int i = 0; i < BOARDSIZE; i++) {
-      for (int j = 0; j < BOARDSIZE; j++) {
-          board[i][j] = ' ';
-      }
-    }
+
 
     //print board
     System.out.println(" _______________________ ");
