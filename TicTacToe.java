@@ -41,6 +41,7 @@ public class TicTacToe {
         board[row][col] = tileChar; //place corresponding tile on the board
         status = gameStatus(); //check if the game is over
         firstPlayer = !firstPlayer; //change to player 2's turn
+        turnCounter++;
       } else {
         System.out.println("Invalid move. Try again.");
       }
@@ -55,7 +56,6 @@ public class TicTacToe {
           break;
         case Status.CONTINUE:
           gameOver = false;
-          turnCounter++;
           break;
         case Status.DRAW:
           System.out.println("Draw, neither player wins!");
