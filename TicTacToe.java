@@ -9,10 +9,10 @@ public class TicTacToe {
   private char board[][] = new char[BOARDSIZE][BOARDSIZE];
   private boolean firstPlayer = true;
   private boolean gameOver = false;
-  
+  private int turnCounter = 1;
 
   public void play() { 
-    //game started
+    //game started, set counter to first turn
     //fill matrix with empty spaces
     for (int i = 0; i < BOARDSIZE; i++) {
       for (int j = 0; j < BOARDSIZE; j++) {
@@ -39,20 +39,29 @@ public class TicTacToe {
       //check if their move is valid
       if (validMove(row, col)) {
         board[row][col] = tileChar; //place corresponding tile on the board
-        printBoard(); //print the board
-        checkWin(); //check if the game is over
-        if (checkWin()) {
-          System.out.println(player + " wins!");
-          gameOver = true;
-        }
-        //printStatus(); //print the status of the game
+        status = gameStatus(); //check if the game is over
         firstPlayer = !firstPlayer; //change to player 2's turn
       } else {
         System.out.println("Invalid move. Try again.");
       }
       
-      System.out.println();
+      System.out.println(turnCounter);
       printBoard(); //print the board
+
+      switch(status){
+        case Status.WIN:
+          gameOver = true;
+          System.out.println(player + " wins! ");
+          break;
+        case Status.CONTINUE:
+          gameOver = false;
+          turnCounter++;
+          break;
+        case Status.DRAW:
+          System.out.println("Draw, neither player wins!");
+          gameOver = true;
+          break;
+      }
     } //end of while loop
     input.close(); //close scanner
     System.out.println("Thank you for playing our game!");
@@ -76,23 +85,6 @@ public class TicTacToe {
       System.out.println("\n|_______|_______|_______|");
     }
   }
-  /*
-  private void printStatus() {
-
-    switch(status){
-      case WIN: 
-          System.out.println("Player " + (firstPlayer ? "x" : "o") + "wins.");
-          break;
-      case DRAW:
-          System.out.println("Draw.");
-          break;
-      case CONTINUE:
-          System.out.println("Player " + (firstPlayer ? "x" : "o") + "'s turn.");
-          break;
-    }
-
-  }
-   */
   
   //function checks to see if the move they made is valid
   public boolean validMove(int row, int col) {
@@ -117,26 +109,32 @@ public class TicTacToe {
     }
   }
 
-  private boolean checkWin() {
+  private Status gameStatus() {
     //check rows
     for (int i = 0; i < BOARDSIZE; i++) {
       if (board[i][0] == board[i][1] && board[i][1] == board[i][2] && board[i][0] != ' ' && board[i][1] != ' ' && board[i][2] != ' ') {
-        return true;
+        return Status.WIN;
       }
     }
     //check columns
     for (int i = 0; i < BOARDSIZE; i++) {
       if (board[0][i] == board[1][i] && board[1][i] == board[2][i] && board[0][i] != ' ' && board[1][i] != ' ' && board[2][i] != ' ') {
-        return true;
+        return Status.WIN;
       }
     }
     //check diagonals
     if (board[0][0] == board[1][1] && board[1][1] == board[2][2] && board[0][0] != ' ' && board[1][1] != ' ' && board[2][2] != ' ') {
-      return true;
+      return Status.WIN;
     }
     if (board[0][2] == board[1][1] && board[1][1] == board[2][0] && board[0][2] != ' ' && board[1][1] != ' ' && board[2][0] != ' ') {
-      return true;
+      return Status.WIN;
     }
-    return false;
+    //check draw
+    if (turnCounter >= (BOARDSIZE * BOARDSIZE))
+    {
+      return Status.DRAW;
+    }
+    //else status stays CONTINUE
+    return Status.CONTINUE;
   }
 }
