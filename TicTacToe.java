@@ -7,7 +7,7 @@ public class TicTacToe {
   private final int BOARDSIZE = 3;
   private Status status;
   private char board[][] = new char[BOARDSIZE][BOARDSIZE];
-  private boolean firstPlayer;
+  private boolean firstPlayer = true;
   private boolean gameOver = false;
   
 
@@ -15,6 +15,7 @@ public class TicTacToe {
      
     Scanner input = new Scanner(System.in);
     printBoard(); //prints the board
+
     while (gameOver == false) {
       int row, col; //row and column for the move
       if (firstPlayer) {
@@ -27,7 +28,7 @@ public class TicTacToe {
         
         //check if their move is valid
         if (validMove(row, col)) {
-          board[row][col] = 'x'; //place an x on the board
+          printSymbol(row, col); //place an x on the board
           printBoard(); //print the board
           printStatus(); //print the status of the game
           firstPlayer = false; //change to player 2's turn
@@ -44,7 +45,7 @@ public class TicTacToe {
         
         //check if their move is valid
         if (validMove(row, col)) {
-          board[row][col] = 'o'; //place an o on the board
+          printSymbol(row, col); //place an o on the board
           printBoard(); //print the board
           printStatus(); //print the status of the game
           firstPlayer = true; //change to player 1's turn
@@ -102,11 +103,15 @@ public class TicTacToe {
     }
   }
   
-  private char printSymbol(int column, int row) {
+  private char printSymbol(int row, int column) {
     char output;
-
-    output = board[column][row];
-
+    if (firstPlayer = true){
+      output = 'x';
+      output = board[row][column];
+    } else {
+      output = 'o';
+      output = board[row][column];
+    }
     return output;
-  }
+}
 }
