@@ -26,27 +26,27 @@ public class TicTacToe {
     //play game loop
     while (gameOver == false) {
       int row, col; //row and column for the move
-      String player = (firstPlayer) ? "Player 1" : "Player 2"; //determine player string based on firstPlayer boolean
+      String player = (firstPlayer) ? "Player X" : "Player O"; //determine player string based on firstPlayer boolean
       char tileChar = (firstPlayer) ? 'x' : 'o';
 
       System.out.println(player + "'s turn.");
-      System.out.println("Enter row: ");
-      row = input.nextInt() - 1;
-      System.out.println("Enter column: ");
-      col = input.nextInt() - 1;
+      System.out.print(player + ": Enter row ( 0, 1 or 2 ): ");
+      row = input.nextInt();
+      System.out.print(player + ": Enter row ( 0, 1 or 2 ): ");
+      col = input.nextInt();
 
 
       //check if their move is valid
       if (validMove(row, col)) {
         board[row][col] = tileChar; //place corresponding tile on the board
-        printBoard(); //print the board
         //printStatus(); //print the status of the game
         firstPlayer = !firstPlayer; //change to player 2's turn
       } else {
         System.out.println("Invalid move. Try again.");
       }
       
-      
+      System.out.println();
+      printBoard(); //print the board
     } //end of while loop
     input.close(); //close scanner
     System.out.println("Thank you for playing our game!");
