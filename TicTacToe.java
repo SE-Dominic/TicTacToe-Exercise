@@ -89,7 +89,7 @@ public class TicTacToe {
   
   //function checks to see if the move they made is valid
   public boolean validMove(int row, int col) {
-    if ((row <= 2 && row >= 0) && (col <= 0  && col >= 2)) {
+    if ((row <= 2 && row >= 0) && (col >= 0  && col <= 2)) {
       if(board[row][col] == ' ')
       return true;
     }
