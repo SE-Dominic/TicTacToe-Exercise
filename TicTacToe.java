@@ -83,6 +83,7 @@ public class TicTacToe {
       System.out.println("\n|_______|_______|_______|");
     }
   }
+  /*
   private void printStatus() {
     switch(status){
       case WIN: 
@@ -97,6 +98,8 @@ public class TicTacToe {
     }
 
   }
+   */
+  
   //function checks to see if the move they made is valid
   public boolean validMove(int row, int col) {
     if (board[row][col] != 'x' || board[row][col] != 'o') {
@@ -117,4 +120,27 @@ public class TicTacToe {
     }
     return output;
 }
+  private boolean checkWin() {
+    //check rows
+    for (int i = 0; i < BOARDSIZE; i++) {
+      if (board[i][0] == board[i][1] && board[i][1] == board[i][2]) {
+        return true;
+      }
+    }
+    //check columns
+    for (int i = 0; i < BOARDSIZE; i++) {
+      if (board[0][i] == board[1][i] && board[1][i] == board[2][i]) {
+        return true;
+      }
+    }
+    //check diagonals
+    if (board[0][0] == board[1][1] && board[1][1] == board[2][2]) {
+      return true;
+    }
+    if (board[0][2] == board[1][1] && board[1][1] == board[2][0]) {
+      return true;
+    }
+    return false;
+  }
+
 }
