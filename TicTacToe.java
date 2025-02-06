@@ -66,10 +66,11 @@ public class TicTacToe {
       }
     } //end of while loop
     input.close(); //close scanner
+    System.out.println("Thank you for playing our game!");
   }
+
+
   public void printBoard(){
-
-
     //print board
     System.out.println(" _______________________ ");
 
